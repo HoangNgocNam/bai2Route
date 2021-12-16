@@ -40,10 +40,18 @@ class AuthorController extends Controller
         return redirect()->route("authors.index");
     }
 
-    public function update($id)
+    public function edit($id)
     {
-        $author = DB::table('authors')
+        $author = DB::table('authors')->where('id', '=', $id)->get()->first();
+        return view("author.update",compact("author"));
+    }
+
+    public function update($id ,Request $request)
+    {
+        $data = $request->only("name","country");
+        DB::table('authors')
             ->where('id', $id)
-            ->update(['votes' => 1]);
+            ->update($data);
+        return redirect()->route("authors.index");
     }
 }

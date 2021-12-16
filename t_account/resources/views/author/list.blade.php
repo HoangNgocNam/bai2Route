@@ -26,7 +26,7 @@
             <td>{{ $author->name }}</td>
             <td>{{ $author->country }}</td>
             <td><a href="{{ route("authors.show", $author->id) }}">Delail</a></td>
-{{--            <td><a href="{{ route("authors.update", $author->id) }}">Update</a></td>--}}
+            <td><a href="{{ route("authors.update", $author->id) }}">Update</a></td>
             <td><a onclick="return confirm('Ban co muon xoa khong?')" href="{{ route("authors.delete", $author->id) }}">Delete</a></td>
         </tr>
     @endforeach
